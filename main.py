@@ -224,8 +224,8 @@ def main():
 
     proxies = load_proxies('Proxy.txt')
     video_urls = []
-    url = input(f"Enter the URL for video: ")
     for i in range(int(tabs)):
+        url = input(f"Enter the URL for video: ")
         if url:
             video_urls.append(url)
 
