@@ -221,13 +221,18 @@ def main():
     signal.signal(signal.SIGINT, signal_handler)
     tabs = int(input("Number of Tabs: "))
     delay = int(input("Delay In Secs: "))
+    multiple_urls = input("Do you want to use same url for all tabs? Yes/No")
 
     proxies = load_proxies('Proxy.txt')
-    video_urls = []
-    for i in range(int(tabs)):
-        url = input(f"Enter the URL for video: ")
-        if url:
-            video_urls.append(url)
+    if multiple_urls.lower() == "yes":
+        url = input("Enter the URL for the video")
+        video_urls = [url for i in range(tabs)]
+    else:
+        video_urls = []
+        for i in range(int(tabs)):
+            url = input(f"Enter the URL for video: ")
+            if url:
+                video_urls.append(url)
 
     refer = ['https://www.google.com/', 'https://www.bing.com/']
     proxy_queue = Queue()  # Create a shared queue for proxies
